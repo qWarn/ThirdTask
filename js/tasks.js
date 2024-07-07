@@ -49,7 +49,6 @@ export function displayTasks(data, limit) {
     const date = document.createElement("p");
     date.className = "task-date"
     date.textContent = new Date(data[i].date).toLocaleString();
-
     task.onclick = openModalWindow;
 
     task.append(name, shortDesc, status, date, fullDesc)

@@ -2,7 +2,6 @@ document.addEventListener("change", checkIfOnlyUndone);
 
 export function checkIfOnlyUndone() {
   const checkbox = document.getElementById("not-done-tasks");
-    console.log(checkbox.checked);
 
     const taskContainer = document.getElementById("tasks");
     let tasks = Array.from(taskContainer.getElementsByClassName('task'));
