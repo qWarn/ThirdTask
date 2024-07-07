@@ -1,9 +1,3 @@
-function getTasks() {
-  document.addEventListener("DOMContentLoaded", (event) => {
-    getFirstTasks();
-  })
-}
-
 export function getFirstTasks() {
   fetch("https://todo.doczilla.pro/api/todos?limit=10")
     .then((response) => response.json())
@@ -15,6 +9,8 @@ export function clearTasks() {
 }
 
 export function displayTasks(data, limit) {
+  clearTasks();
+
   const tasks = document.getElementById("tasks");
 
   for (let i = 0; i < limit; i++) {
@@ -49,4 +45,13 @@ export function displayTasks(data, limit) {
     tasks.appendChild(task);
   }
 }
-getTasks();
+
+export function displayTasksByDate(start, end, status) {
+  fetch(`https://todo.doczilla.pro/api/todos/date?from=${start}&to=${end}${status !== undefined ? `&status=${status}` : ''}`)
+    .then(response => response.json())
+    .then(data => {
+      displayTasks(data, data.length);
+    })
+}
+
+getFirstTasks();
