@@ -1,16 +1,16 @@
-import {clearTasks, displayTasks, getFirstTasks} from './tasks.js'
+import {clearTasks, displayTasks, displayAllTasks} from './tasks.js'
 
 const search = document.getElementById('task-search');
 
 search.addEventListener('input', function (event) {
   clearTasks();
 
-  const query = this.value
+  const query = this.value;
   if (query === "") {
-    getFirstTasks();
+    displayAllTasks();
   } else {
     fetch(`https://todo.doczilla.pro/api/todos/find?q=${query}`)
       .then((response) => response.json())
-      .then((data) => displayTasks(data, data.length))
+      .then((data) => displayTasks(data, data.length));
   }
 });

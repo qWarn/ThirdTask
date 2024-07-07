@@ -9,27 +9,43 @@
 <body>
 
 <div class="app">
-  <input type="text" class="search-tasks" id="task-search">
-  <button type="button" id="today-tasks">Сегодня</button>
-  <button type="button" id="week-tasks">На неделю</button>
-  <input type="checkbox" id="not-done-tasks">
+  <div class="sidebar">
+    <input type="text" class="search-tasks" id="task-search" placeholder="Поиск">
+    <button type="button" id="today-tasks">Сегодня</button>
+    <button type="button" id="week-tasks">На неделю</button>
+    <input type="checkbox" id="not-done-tasks">
+    <label for="not-done-tasks">Только невыполненные</label>
 
-  <div id="calendar">
-    <div>
-      <input type="date" id="start-date"> - <input type="date" id="end-date">
+    <div id="calendar">
+      <div>
+        <input type="date" id="start-date">
+        <p>-</p>
+        <input type="date" id="end-date">
+      </div>
     </div>
   </div>
 
-  <div id="tasks">
+  <div class="tasks-container">
+    <div id="tasks"></div>
   </div>
 
-  <script type="module" src="js/todayTasks.js"></script>
-  <script type="module" src="js/search.js"></script>
-  <script type="module" src="js/tasks.js"></script>
-  <script type="module" src="js/notDoneTasks.js"></script>
-  <script type="module" src="js/weekTasks.js"></script>
-  <script type="module" src="js/calendar.js"></script>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2 id="modal-title">Название</h2>
+      <p id="modal-date">08.05.2022 00:10</p>
+      <p id="modal-description">Полное описание</p>
+      <button id="close-modal">Готово</button>
+    </div>
+  </div>
+
 </div>
 
+<script type="module" src="js/todayTasks.js"></script>
+<script type="module" src="js/search.js"></script>
+<script type="module" src="js/tasks.js"></script>
+<script type="module" src="js/onlyUndone.js"></script>
+<script type="module" src="js/weekTasks.js"></script>
+<script type="module" src="js/calendar.js"></script>
+<script src="js/modal.js"></script>
 </body>
 </html>

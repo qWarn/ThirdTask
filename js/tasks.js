@@ -1,7 +1,15 @@
-export function getFirstTasks() {
-  fetch("https://todo.doczilla.pro/api/todos?limit=10")
+import {openModalWindow} from "./modal.js";
+
+export function displayAllTasks() {
+  fetch("https://todo.doczilla.pro/api/todos?limit=2")
     .then((response) => response.json())
-    .then(data => displayTasks(data, data.length > 10 ? 10 : data.length));
+    .then(data => displayTasks(data, data.length));
+}
+
+export function displayTasksByDate(start, end, status) {
+  fetch(`https://todo.doczilla.pro/api/todos/date?from=${start}&to=${end}${status !== undefined ? `&status=${status}` : ''}`)
+    .then(response => response.json())
+    .then(data => displayTasks(data, data.length));
 }
 
 export function clearTasks() {
@@ -38,20 +46,15 @@ export function displayTasks(data, limit) {
 
     const date = document.createElement("p");
     date.className = "task-date;"
-    date.hidden = true;
-    date.textContent = data[i].date;
+    date.textContent = new Date(data[i].date).toLocaleString();
+
+    task.onclick = openModalWindow;
 
     task.append(name, shortDesc, status, date, fullDesc)
     tasks.appendChild(task);
   }
 }
 
-export function displayTasksByDate(start, end, status) {
-  fetch(`https://todo.doczilla.pro/api/todos/date?from=${start}&to=${end}${status !== undefined ? `&status=${status}` : ''}`)
-    .then(response => response.json())
-    .then(data => {
-      displayTasks(data, data.length);
-    })
-}
 
-getFirstTasks();
+
+displayAllTasks();
