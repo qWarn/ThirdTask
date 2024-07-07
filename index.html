@@ -9,15 +9,20 @@
 <body>
 
 <div class="app">
-  <input type="text" class="search-tasks" id="task-search" >
-  <button type="button" id="today-tasks"></button>
+  <input type="text" class="search-tasks" id="task-search">
+  <button type="button" id="today-tasks">Сегодня</button>
+  <button type="button" id="week-tasks">На неделю</button>
   <input type="checkbox" id="not-done-tasks">
 
   <div id="tasks">
 
   </div>
+
+  <script type="module" src="js/todayTasks.js"></script>
   <script type="module" src="js/search.js"></script>
   <script type="module" src="js/tasks.js"></script>
+  <script type="module" src="js/notDoneTasks.js"></script>
+  <script type="module" src="js/weekTasks.js"></script>
 </div>
 
 </body>

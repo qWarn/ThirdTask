@@ -10,6 +10,10 @@ export function getFirstTasks() {
     .then(data => displayTasks(data, data.length > 10 ? 10 : data.length));
 }
 
+export function clearTasks() {
+  document.getElementById("tasks").innerHTML = "";
+}
+
 export function displayTasks(data, limit) {
   const tasks = document.getElementById("tasks");
 
