@@ -1,13 +1,14 @@
 import {openModalWindow} from "./modal.js";
+import {checkIfOnlyUndone} from "./checkIfOnlyUndone.js";
 
 export function displayAllTasks() {
-  fetch("https://todo.doczilla.pro/api/todos?limit=2")
+  fetch("https://todo.doczilla.pro/api/todos")
     .then((response) => response.json())
     .then(data => displayTasks(data, data.length));
 }
 
-export function displayTasksByDate(start, end, status) {
-  fetch(`https://todo.doczilla.pro/api/todos/date?from=${start}&to=${end}${status !== undefined ? `&status=${status}` : ''}`)
+export function displayTasksByDate(start, end) {
+  fetch(`https://todo.doczilla.pro/api/todos/date?from=${start}&to=${end}`)
     .then(response => response.json())
     .then(data => displayTasks(data, data.length));
 }
@@ -44,8 +45,9 @@ export function displayTasks(data, limit) {
     status.type = "checkbox";
     status.checked = data[i].status;
 
+
     const date = document.createElement("p");
-    date.className = "task-date;"
+    date.className = "task-date"
     date.textContent = new Date(data[i].date).toLocaleString();
 
     task.onclick = openModalWindow;
@@ -53,6 +55,8 @@ export function displayTasks(data, limit) {
     task.append(name, shortDesc, status, date, fullDesc)
     tasks.appendChild(task);
   }
+
+  checkIfOnlyUndone();
 }
 
 displayAllTasks();

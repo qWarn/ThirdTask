@@ -1,5 +1,4 @@
-import {displayTasksByDate} from "./tasks.js";
-import {onlyUndone} from "./onlyUndone.js";
+import {clearTasks, displayTasksByDate} from "./tasks.js";
 
 const firstCalendar = document.getElementById("start-date");
 const secondCalendar = document.getElementById("end-date");
@@ -16,11 +15,18 @@ function handleCalendarChange() {
   const start = firstCalendar.value;
   const end = secondCalendar.value;
 
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  if (startDate.getTime() > endDate.getTime()) {
+    clearTasks();
+  }
+
   if (start !== "" && end === "") {
-    displayTasksByDate(new Date(start).setHours(0, 0, 0, 0), new Date(start).setHours(23, 59, 59, 999), onlyUndone())
+    displayTasksByDate(startDate.setHours(0, 0, 0, 0), startDate.setHours(23, 59, 59, 999))
   }
 
   if (start !== "" && end !== "") {
-    displayTasksByDate(new Date(start).setHours(0, 0, 0, 0), new Date(end).setHours(0, 0, 0, 0), onlyUndone())
+    displayTasksByDate(startDate.setHours(0, 0, 0, 0), endDate.setHours(0, 0, 0, 0))
   }
 }

@@ -22,4 +22,4 @@ window.onclick = function(event) {
 
 document.getElementById("close-modal").addEventListener("click", event => {
   closeModal();
-})
+});
