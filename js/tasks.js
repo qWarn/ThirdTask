@@ -55,6 +55,4 @@ export function displayTasks(data, limit) {
   }
 }
 
-
-
 displayAllTasks();
