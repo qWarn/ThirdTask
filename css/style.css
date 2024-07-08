@@ -6,54 +6,57 @@ body {
 }
 
 .app {
-  display: flex;
   height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
+}
+
+.top {
+  width: 100%;
+  background: lightgray;
+  height: 70px;
 }
 
 .sidebar {
-  width: 250px;
-  background-color: #fff;
+  position: absolute;
+  top: 70px;
+  width: 300px;
+  background: ghostwhite;
   border-right: 1px solid #ddd;
-  padding: 20px;
-  box-sizing: border-box;
+  padding: 5px;
+  height: 100%;
 }
 
-.tasks-container {
-  flex-grow: 1;
-  padding: 20px;
-  overflow-y: auto;
-  box-sizing: border-box;
+#tasks {
+  margin-top: 60px;
 }
 
 .search-tasks {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  font-weight: bold;
+  padding: 20px;
+  background: darkgray;
+  margin-top: 8px;
+  margin-left: 15px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 5px;
+  height: 50px;
+  width: 280px;
 }
 
 button {
+  font-weight: bold;
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
-  background-color: #007BFF;
-  color: white;
+  background-color: gray;
+  color: lightgray;
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
-}
-
-#not-done-tasks {
-  margin-bottom: 10px;
+  background-color: dimgray;
 }
 
 label {
@@ -67,7 +70,6 @@ label {
 }
 
 input[type="date"] {
-  width: calc(50% - 10px);
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -81,13 +83,26 @@ input[type="date"] {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="date"]:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+input[type="checkbox"] {
+  accent-color: dimgray;
+}
+
+input[type='date'] {
+  width: 300px;
+  background: gray;
+  padding: 15px;
+  top: 50%;
+  left: 50%;
+  color: lightgray;
+}
+
+input[type='date']:hover {
+  background: dimgray;
 }
 
 .task {
-  display: flex;
+  margin-left: 330px;
+  width: 80%;
   flex-direction: column;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -118,7 +133,16 @@ input[type="date"]:focus {
 .task-date {
   font-size: 0.9em;
   color: #888;
-  margin: 0;
+  margin-left: 1400px;
+}
+
+#sort-tasks {
+  position: absolute;
+  margin-top: 10px;
+  right: 120px;
+  height: 40px;
+  color: darkgray;
+  font-weight: bold;
 }
 
 .modal {
@@ -147,6 +171,23 @@ input[type="date"]:focus {
   gap: 10px;
 }
 
+#not-done-tasks {
+  height: 10px;
+  padding-top: 0;
+}
+
+.calendar-label {
+  color: darkgray;
+  margin-left: 10px;
+}
+
+.undone-tasks {
+  padding-top: 10px;
+  font-weight: bold;
+  color: darkgray;
+  display: flex;
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -164,7 +205,7 @@ input[type="date"]:focus {
 #close-modal {
   align-self: flex-end;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: gray;
   color: white;
   border: none;
   border-radius: 5px;
@@ -173,5 +214,5 @@ input[type="date"]:focus {
 }
 
 #close-modal:hover {
-  background-color: #0056b3;
+  background-color: dimgray;
 }

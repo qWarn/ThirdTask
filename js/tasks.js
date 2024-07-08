@@ -1,6 +1,15 @@
 import {openModalWindow} from "./modal.js";
 import {checkIfOnlyUndone} from "./checkIfOnlyUndone.js";
 
+const dateFormatOptions = {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false
+};
+
 export function displayAllTasks() {
   fetch("https://todo.doczilla.pro/api/todos")
     .then((response) => response.json())
@@ -44,11 +53,12 @@ export function displayTasks(data, limit) {
     status.className = "task-status";
     status.type = "checkbox";
     status.checked = data[i].status;
-
+    status.disabled = true;
 
     const date = document.createElement("p");
     date.className = "task-date"
-    date.textContent = new Date(data[i].date).toLocaleString();
+    date.textContent = new Date(data[i].date)
+      .toLocaleString('ru-RU', dateFormatOptions).replace(",", '');
     task.onclick = openModalWindow;
 
     task.append(name, shortDesc, status, date, fullDesc)

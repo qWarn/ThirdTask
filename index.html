@@ -7,37 +7,38 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <div class="app">
-  <div class="sidebar">
+  <div class="top">
     <input type="text" class="search-tasks" id="task-search" placeholder="Поиск">
+  </div>
+  <div class="sidebar">
     <button type="button" id="today-tasks">Сегодня</button>
     <button type="button" id="week-tasks">На неделю</button>
-    <input type="checkbox" id="not-done-tasks">
-    <label for="not-done-tasks">Только невыполненные</label>
-
     <div id="calendar">
       <div>
+        <label for="start-date" class="calendar-label">От</label>
         <input type="date" id="start-date">
-        <p>-</p>
+        <label for="end-date" class="calendar-label">До</label>
         <input type="date" id="end-date">
       </div>
     </div>
+    <div class="undone-tasks">
+      <input type="checkbox" id="not-done-tasks">
+      <label for="not-done-tasks">Только невыполненные</label>
+    </div>
   </div>
-
-  <div class="tasks-container">
-    <div id="tasks"></div>
+  <div id="sort-tasks">
+    <p>Сортировать по дате</p>
   </div>
-
+  <div id="tasks"></div>
   <div id="modal" class="modal">
     <div class="modal-content">
       <h2 id="modal-title">Название</h2>
-      <p id="modal-date">08.05.2022 00:10</p>
+      <p id="modal-date">Дата</p>
       <p id="modal-description">Полное описание</p>
       <button id="close-modal">Готово</button>
     </div>
   </div>
-
 </div>
 
 <script type="module" src="js/todayTasks.js"></script>
@@ -47,5 +48,7 @@
 <script type="module" src="js/weekTasks.js"></script>
 <script type="module" src="js/calendar.js"></script>
 <script type="module" src="js/modal.js"></script>
+<script type="module" src="js/sortTasks.js"></script>
+
 </body>
 </html>
