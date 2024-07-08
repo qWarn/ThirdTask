@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: Gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowedOrigins:
+              - "*"
+      routes:
+        - id: todos
+          uri: https://todo.doczilla.pro/
+          predicates:
+            - Path=/api/todos
+        - id: todos-date
+          uri: https://todo.doczilla.pro/
+          predicates:
+            - Path=/api/todos/date
+        - id: todos-find
+          uri: https://todo.doczilla.pro/
+          predicates:
+            - Path=/api/todos/find

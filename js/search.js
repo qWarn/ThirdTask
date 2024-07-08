@@ -9,7 +9,7 @@ search.addEventListener('input', function (event) {
   if (query === "") {
     displayAllTasks();
   } else {
-    fetch(`https://todo.doczilla.pro/api/todos/find?q=${query}`)
+    fetch(`http://localhost:8080/api/todos/find?q=${query}`)
       .then((response) => response.json())
       .then((data) => displayTasks(data, data.length));
   }

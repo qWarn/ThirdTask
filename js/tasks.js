@@ -11,13 +11,13 @@ const dateFormatOptions = {
 };
 
 export function displayAllTasks() {
-  fetch("https://todo.doczilla.pro/api/todos")
+  fetch("http://localhost:8080/api/todos")
     .then((response) => response.json())
     .then(data => displayTasks(data, data.length));
 }
 
 export function displayTasksByDate(start, end) {
-  fetch(`https://todo.doczilla.pro/api/todos/date?from=${start}&to=${end}`)
+  fetch(`http://localhost:8080/api/todos/date?from=${start}&to=${end}`)
     .then(response => response.json())
     .then(data => displayTasks(data, data.length));
 }
